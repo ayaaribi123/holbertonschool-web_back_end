@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-module for the delay
+takes an integer max_delay and returns a asyncio.Task.
 """
 import asyncio
 import random
