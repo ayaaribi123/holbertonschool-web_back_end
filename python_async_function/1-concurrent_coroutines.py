@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-module wait_random
+Import wait_random from the previous python
+file that you've written and write an async
+routine called wait_n that takes in 2 int arguments
 """
 import asyncio
 from typing import List
