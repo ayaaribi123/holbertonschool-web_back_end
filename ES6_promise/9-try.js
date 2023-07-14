@@ -3,12 +3,13 @@ export default function guardrail(mathFunction) {
   let resualt;
 
   try {
-			resualt = mathFunction();
+    resualt = mathFunction();
   } catch (err) {
 			resualt = err.toString();
   }
 
-  queue.push('Guardrail was processed', resualt);
+  queue.push(resualt);
+  queue.push('Guardrail was processed');
 
   return queue;
 }
