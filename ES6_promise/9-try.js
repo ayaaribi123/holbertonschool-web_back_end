@@ -5,7 +5,7 @@ export default function guardrail(mathFunction) {
   try {
     resualt = mathFunction();
   } catch (err) {
-			 resualt = err.toString();
+    resualt = err.toString();
   }
 
   queue.push(resualt);
