@@ -9,7 +9,7 @@ export default class Currency {
   }
 
   set code(code) {
-    if (typeof code === 'string'){
+    if (typeof code === 'string') {
       this._code = code;
     }
   }
@@ -19,7 +19,7 @@ export default class Currency {
   }
 
   set name(name) {
-    if (typeof name === 'string'){
+    if (typeof name === 'string') {
       this._name = name;
     }
   }
