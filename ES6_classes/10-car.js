@@ -5,7 +5,7 @@ export default class Car {
     this._color = color;
   }
 
-  static get [Symbol.newobj]() {
+  static get [Symbol.species]() {
     return this;
   }
 
