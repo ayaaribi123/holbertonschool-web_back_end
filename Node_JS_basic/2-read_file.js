@@ -23,18 +23,18 @@ function countStudents(path) {
       if (!field[student[i][3]]) field[student[i][3]] = [];
 
       field[student[i][3]].push(student[i][0]);
-		  }
-	 }
+    }
+  }
 
-	 delete field.field;
+  delete field.field;
 
-	 for (const key of Object.keys(field)) {
-		  console.log(
-			`Number of students in ${key}: ${field[key].length}. List: ${field[
-				key
-			].join(', ')}`,
+  for (const key of Object.keys(field)) {
+    console.log(
+      `Number of students in ${key}: ${field[key].length}. List: ${field[
+        key
+      ].join(', ')}`,
 		);
-	}
+  }
 }
 
 module.exports = countStudents;
