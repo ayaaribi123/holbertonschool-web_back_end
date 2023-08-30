@@ -8,6 +8,7 @@ function countStudents(path) {
         return;
       }
 
+      const response = [];
       const content = data.toString().split('\n');
 
       let student = content.filter((item) => item);
@@ -16,6 +17,7 @@ function countStudents(path) {
 
       const number = student.length ? student.length - 1 : 0;
       console.log(`Number of students: ${number}`);
+						response.push(`Number of students: ${number}`);
 
       const field = {};
       for (const i in student) {
@@ -34,6 +36,7 @@ function countStudents(path) {
 								].join(', ')}`;
 
         console.log(res);
+								response.push(res);
       }
     });
   });
