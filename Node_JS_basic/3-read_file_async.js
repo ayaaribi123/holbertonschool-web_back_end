@@ -8,7 +8,7 @@ function countStudents(path) {
         return;
       }
       const result = [];
-						 const content = data.toString().split('\n');
+       const content = data.toString().split('\n');
 
       let student = content.filter((item) => item);
 
@@ -16,7 +16,7 @@ function countStudents(path) {
 
       const number = student.length ? student.length - 1 : 0;
       console.log(`Number of students: ${number}`);
-						result.push(`Number of students: ${number}`);
+      result.push(`Number of students: ${number}`);
 
       const field = {};
       for (const i in student) {
@@ -31,7 +31,7 @@ function countStudents(path) {
 
       for (const key of Object.keys(field)) {
         const res = `Number of students in ${key}: ${field[key].length}. List: ${field[
-									 key
+          key
         ].join(', ')}`;
 
         console.log(res);
