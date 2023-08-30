@@ -33,7 +33,7 @@ function countStudents(path) {
       `Number of students in ${key}: ${field[key].length}. List: ${field[
         key
       ].join(', ')}`,
-		);
+    );
   }
 }
 
