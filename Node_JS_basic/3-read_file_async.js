@@ -36,6 +36,7 @@ function countStudents(path) {
 								].join(', ')}`;
 
         console.log(res);
+								response.push(res);
       }
     });
   });
