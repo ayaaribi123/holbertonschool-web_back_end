@@ -8,7 +8,7 @@ function countStudents(path) {
         return;
       }
       const result = [];
-       const content = data.toString().split('\n');
+      const content = data.toString().split('\n');
 
       let student = content.filter((item) => item);
 
