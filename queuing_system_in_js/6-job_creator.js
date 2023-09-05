@@ -7,13 +7,6 @@ const Data = {
 	message: 'here is your code'
 }
 
-function send(Data) {
-  console.log(
-    `Sending notification to ${phoneNumber}, with message: ${message}`,
-  );
-}
-
-
 queue.process('push_notification_code', (job, done) => {
   const { phoneNumber, message } = job.data;
   send(phoneNumber, message);
