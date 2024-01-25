@@ -2,7 +2,8 @@
 """
 LIFO caching
 """
-BaseCaching = __import__('base_caching').BaseCaching
+from base_caching import BaseCaching
+
 
 class LIFOCache(BaseCaching):
     """
@@ -10,24 +11,29 @@ class LIFOCache(BaseCaching):
     """
 
     def __init__(self):
-        """Constructor"""
+        """
+        overload
+        """
         super().__init__()
-        self.remove = None
 
     def put(self, key, item):
-        """Add key-value pair to the cache"""
+        """
+        dictionary
+        """
         if key and item:
             self.cache_data[key] = item
-            self.remove_if_needed()
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            self.cache_data.pop(self.remove)
+            print("DISCARD: {}".format(self.remove, end=""))
+        if key:
+            self.remove = key
+        else:
+            pass
 
     def get(self, key):
-        """Get value associated with key"""
-        return self.cache_data.get(key, None)
-
-    def remove_if_needed(self):
-        """Check and evict items if the cache exceeds its size"""
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            removed_key = self.remove
-            self.cache_data.pop(removed_key)
-            print("DISCARD: {}".format(removed_key))
-            self.remove = next(reversed(self.cache_data), None)
+        """
+        get value of key from dict
+        """
+        if key is None:
+            return None
+        return self.cache_data.get(key)
