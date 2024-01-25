@@ -12,23 +12,50 @@ class MRUCache(BaseCaching):
 
     def __init__(self):
         super().__init__()
+        self.head, self.tail = '-', '='
+        self.next, self.prev = {}, {}
+        self.handle(self.head, self.tail)
 
-    def _update_order(self, key):
-        """Update the order of keys to represent MRU"""
-        if key in self.cache_data:
-            del self.cache_data[key]
-        self.cache_data[key] = None
+    def handle(self, head, tail):
+        """
+        handle elements
+        """
+        self.next[head], self.prev[tail] = tail, head
+
+    def _remove(self, key):
+        """
+        remove element
+        """
+        self.handle(self.prev[key], self.next[key])
+        del self.prev[key], self.next[key], self.cache_data[key]
+
+    def _add(self, key, item):
+        """
+        add element
+        """
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS - 1:
+            print("DISCARD: {}".format(self.prev[self.tail]))
+            self._remove(self.prev[self.tail])
+        self.cache_data[key] = item
+        self.handle(self.prev[self.tail], key)
+        self.handle(key, self.tail)
 
     def put(self, key, item):
-        """Add key-value pair to the cache"""
+        """dictionary
+        """
         if key and item:
-            self._update_order(key)
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                discarded_key = next(iter(self.cache_data))
-                print("DISCARD:", discarded_key)
-                del self.cache_data[discarded_key]
-            self.cache_data[key] = item
+            if key in self.cache_data:
+                self._remove(key)
+            self._add(key, item)
 
     def get(self, key):
-        """Get value associated with key"""
-        return self.cache_data.get(key, None)
+        """
+        Return the value linked
+        """
+        if key is None or self.cache_data.get(key) is None:
+            return None
+        if key in self.cache_data:
+            value = self.cache_data[key]
+            self._remove(key)
+            self._add(key, value)
+            return value
